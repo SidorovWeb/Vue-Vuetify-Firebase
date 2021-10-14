@@ -133,6 +133,8 @@ body {
 
 .AppImage__img {
   opacity: 1;
+  width: 100%;
+  height: 100%;
 }
 
 @keyframes fadeIn {
