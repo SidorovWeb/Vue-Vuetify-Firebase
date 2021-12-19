@@ -64,17 +64,6 @@ export default {
       newImg.setAttribute('alt', 'Фон')
       newImg.setAttribute('data-background', currentImg)
       AppImage.append(newImg)
-
-      if (AppImage.childNodes.length < 2) {
-        newImg.classList.add('AppImage--fadeIn')
-      } else {
-        AppImage.firstChild.classList.add('AppImage--fadeOut')
-
-        setTimeout(() => {
-          newImg.classList.add('AppImage--fadeIn')
-          AppImage.firstChild.remove()
-        }, 500)
-      }
     },
   },
 

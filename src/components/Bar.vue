@@ -1,24 +1,9 @@
 <template>
-  <v-app-bar
-    class="v-AppBar"
-    height="94px"
-    color="transparent"
-    app
-    elevation="0"
-  >
+  <v-app-bar class="v-AppBar" height="94px" color="transparent" app elevation="0">
     <v-spacer></v-spacer>
-    <div
-      class="v-AppBar__controls d-flex primary rounded-pill px-8 elevation-4"
-    >
+    <div class="v-AppBar__controls d-flex primary rounded-pill px-8 elevation-4">
       <transition name="insert">
-        <v-btn
-          v-if="$route.path !== '/'"
-          icon
-          small
-          fab
-          @click="goHome"
-          color="dark"
-        >
+        <v-btn v-if="$route.path !== '/'" icon small fab @click="goHome" color="dark">
           <v-icon>mdi-home</v-icon>
         </v-btn>
       </transition>
@@ -30,29 +15,12 @@
         :close-on-content-click="false"
       >
         <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            fab
-            icon
-            small
-            v-bind="attrs"
-            v-on="on"
-            color="dark"
-            @click="toLink({ path: '/' })"
-          >
+          <v-btn fab icon small v-bind="attrs" v-on="on" color="dark" @click="toLink({ path: '/' })">
             <v-icon>mdi-cog-outline</v-icon>
           </v-btn>
         </template>
         <v-card class="rounded-lg overflow-hidden" color="primary">
-          <v-card-title
-            class="secondary"
-            style="
-              height: 52px;
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-            "
-          >
+          <v-card-title class="secondary" style="height: 52px; position: absolute; top: 0; left: 0; width: 100%">
           </v-card-title>
           <transition :name="cardPath" mode="out-in">
             <card-menu v-if="card.path === '/'" />
@@ -97,11 +65,6 @@ export default {
     CardMenuCompletedTasks,
     Search,
   },
-  // data() {
-  //   return {
-  //     drawer: true,
-  //   }
-  // },
   computed: {
     ...mapState({
       card: (state) => state.cardMenu.card,

@@ -11,6 +11,7 @@
     :placeholder="placeholder"
     @input="update"
     @blur="blur"
+    autocomplete="new-password"
     @keydown.enter="enter"
   ></v-text-field>
 </template>

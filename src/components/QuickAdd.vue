@@ -1,10 +1,6 @@
 <template>
   <div class="quick-add secondary pa-4 d-flex align-center shadow-bottom">
-    <v-form
-      class="quick-add__form d-flex align-center"
-      ref="form"
-      @submit.prevent="createQuickTask"
-    >
+    <v-form class="quick-add__form d-flex align-center" ref="form" @submit.prevent="createQuickTask">
       <v-text-field
         class="rounded-pill quick-add__input mr-4"
         v-model="field"
@@ -14,6 +10,7 @@
         hide-details
         dense
         color="dark"
+        autocomplete="new-password"
       ></v-text-field>
       <v-btn fab small elevation="0" @click="createQuickTask" :color="ifField">
         <v-icon>mdi-arrow-up</v-icon>

@@ -1,16 +1,7 @@
 <template>
   <div class="Attachments">
-    <label
-      class="Attachments__container rounded-lg mb-4"
-      for="Attachments"
-      :class="[isLoading ? 'disabled' : '']"
-    >
-      <input
-        id="Attachments"
-        class="Attachments__input"
-        type="file"
-        @change="chooseFile"
-      />
+    <label class="Attachments__container rounded-lg mb-4" for="Attachments" :class="[isLoading ? 'disabled' : '']">
+      <input id="Attachments" class="Attachments__input" type="file" @change="chooseFile" />
       <p class="Attachments__text">Click to add / drop your files here</p>
     </label>
 
@@ -29,14 +20,7 @@
           ><v-icon color="accent" x-large>mdi-download-box</v-icon></v-btn
         >
         <div class="Attachments__progress-container flex-grow-1 mr-2">
-          <p
-            class="mb-0 ellipes"
-            :class="[
-              item.done
-                ? 'dark--text subtitle-2'
-                : 'gainsBorough--text caption',
-            ]"
-          >
+          <p class="mb-0 ellipes" :class="[item.done ? 'dark--text subtitle-2' : 'gainsBorough--text caption']">
             {{ item.file.name }}
           </p>
           <v-progress-linear
@@ -51,10 +35,7 @@
         <p v-if="item.done" class="Attachments__date dark--text caption mb-0">
           {{ item.date | formatDate }}
         </p>
-        <v-btn
-          class="Attachments__remove"
-          icon
-          @click="deleteFile(item.file.name, index)"
+        <v-btn class="Attachments__remove" icon @click="deleteFile(item.file.name, index)"
           ><v-icon color="gainsBorough">mdi-close-circle-outline</v-icon></v-btn
         >
       </div>

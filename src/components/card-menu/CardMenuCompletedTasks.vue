@@ -10,35 +10,24 @@
       </v-card-title>
 
       <my-scroll>
-        <v-card-text
-          class="pa-0 CardMenuCompletedTasks__body px-6"
-          style="max-height: calc(100vh - 190px)"
-        >
+        <v-card-text class="pa-0 CardMenuCompletedTasks__body px-6" style="max-height: calc(100vh - 190px)">
           <div class="CardMenuCompletedTasks__header pt-4 px-2">
-            <ul
-              class="CardMenuCompletedTasks__list d-flex justify-space-between align-center text-center mb-6"
-            >
+            <ul class="CardMenuCompletedTasks__list d-flex justify-space-between align-center text-center mb-6">
               <li class="CardMenuCompletedTasks__item">
                 <div class="grey--text subtitle-2">Все задания</div>
-                <div
-                  class="CardMenuCompletedTasks__number font-weight-bold title"
-                >
+                <div class="CardMenuCompletedTasks__number font-weight-bold title">
                   {{ isCompletedTasks }}
                 </div>
               </li>
               <li class="CardMenuCompletedTasks__item">
                 <div class="grey--text subtitle-2">За неделю</div>
-                <div
-                  class="CardMenuCompletedTasks__number font-weight-bold title"
-                >
+                <div class="CardMenuCompletedTasks__number font-weight-bold title">
                   {{ lastSevenDaysDeletedTasks.length }}
                 </div>
               </li>
               <li class="CardMenuCompletedTasks__item">
                 <div class="grey--text subtitle-2">Сегодня</div>
-                <div
-                  class="CardMenuCompletedTasks__number font-weight-bold title"
-                >
+                <div class="CardMenuCompletedTasks__number font-weight-bold title">
                   {{ todayDeletedTasks.length }}
                 </div>
               </li>
@@ -52,26 +41,17 @@
               hide-details
               dense
               prepend-inner-icon="mdi-magnify"
+              autocomplete="new-password"
               color="dark"
             ></v-text-field>
           </div>
 
           <v-list color="primary" class="mb-4">
             <v-list-item v-if="deletedTasks.length < 1">
-              <div
-                class="text-center mt-2 font-weight-bold"
-                style="width: 100%"
-              >
-                Нет выполненых задач
-              </div>
+              <div class="text-center mt-2 font-weight-bold" style="width: 100%">Нет выполненых задач</div>
             </v-list-item>
             <v-list-item v-if="sorted.length < 1 && deletedTasks.length !== 0">
-              <div
-                class="text-center mt-2 font-weight-bold"
-                style="width: 100%"
-              >
-                Не найдено
-              </div>
+              <div class="text-center mt-2 font-weight-bold" style="width: 100%">Не найдено</div>
             </v-list-item>
 
             <v-list-item
@@ -99,30 +79,16 @@
                   link
                   inactive
                 >
-                  <v-btn
-                    class="grey mr-3"
-                    icon
-                    x-small
-                    :ripple="false"
-                    color="primary"
-                    @click="restoreTask(s)"
-                  >
+                  <v-btn class="grey mr-3" icon x-small :ripple="false" color="primary" @click="restoreTask(s)">
                     <v-icon small>mdi-restart</v-icon>
                   </v-btn>
                   <v-list-item-title class="Search__title subtitle-2">
                     {{ s.title }}
                   </v-list-item-title>
-                  <span
-                    v-if="s.category"
-                    class="subtitle-2 pl-3"
-                    style="white-space: nowrap"
-                    >{{ s.category.name }}</span
-                  >
-                  <span
-                    v-if="!s.category"
-                    class="subtitle-2 pl-3"
-                    style="white-space: nowrap"
-                  ></span>
+                  <span v-if="s.category" class="subtitle-2 pl-3" style="white-space: nowrap">{{
+                    s.category.name
+                  }}</span>
+                  <span v-if="!s.category" class="subtitle-2 pl-3" style="white-space: nowrap"></span>
                 </v-list-item>
               </v-list>
             </v-list-item>
@@ -177,9 +143,7 @@ export default {
     },
 
     isCompletedTasks: function () {
-      return !this.currentUser.allCompletedTasks
-        ? 0
-        : this.currentUser.allCompletedTasks
+      return !this.currentUser.allCompletedTasks ? 0 : this.currentUser.allCompletedTasks
     },
 
     isCategoryName: function () {
@@ -189,10 +153,7 @@ export default {
     lastSevenDaysDeletedTasks: function () {
       return [...this.deletedTasks].filter((item) => {
         const array = [0, 1, 2, 3, 4, 5, 6, 7]
-        const dateDeleteTask = this.correctDate(
-          item.timeOfDeleteTask,
-          'YYYY-MM-DD'
-        )
+        const dateDeleteTask = this.correctDate(item.timeOfDeleteTask, 'YYYY-MM-DD')
         const todayDate = moment().format('YYYY-MM-DD')
 
         const date1 = moment(dateDeleteTask)
@@ -205,10 +166,7 @@ export default {
 
     todayDeletedTasks: function () {
       return [...this.deletedTasks].filter((item) => {
-        const dateDeleteTask = this.correctDate(
-          item.timeOfDeleteTask,
-          'YYYY-MM-DD'
-        )
+        const dateDeleteTask = this.correctDate(item.timeOfDeleteTask, 'YYYY-MM-DD')
         const todayDate = moment().format('YYYY-MM-DD')
 
         return dateDeleteTask === todayDate
@@ -219,10 +177,7 @@ export default {
       const self = this
 
       const sorted = [...this.filterTasks].reduce(function (acc, item) {
-        const dateDeleteTask = self.correctDate(
-          item.timeOfDeleteTask,
-          'DD.MM.YY'
-        )
+        const dateDeleteTask = self.correctDate(item.timeOfDeleteTask, 'DD.MM.YY')
 
         if (!Object.prototype.hasOwnProperty.call(acc, dateDeleteTask)) {
           acc[dateDeleteTask] = []

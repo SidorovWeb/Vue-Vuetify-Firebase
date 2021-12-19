@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="Search"
-    ref="search"
-    :class="{ open: !searchClosed, closed: searchClosed }"
-  >
+  <div class="Search" ref="search" :class="{ open: !searchClosed, closed: searchClosed }">
     <div class="d-flex align-center">
       <v-btn fab icon small color="dark" @click="toggle">
         <v-icon>mdi-magnify</v-icon>
@@ -17,16 +13,12 @@
         dense
         color="dark"
         v-model="search"
+        autocomplete="new-password"
         ref="input"
       ></v-text-field>
     </div>
 
-    <v-card
-      class="Search__card rounded-lg overflow-hidden"
-      v-if="search"
-      min-width="300"
-      color="primary"
-    >
+    <v-card class="Search__card rounded-lg overflow-hidden" v-if="search" min-width="300" color="primary">
       <v-list
         ref="list"
         class="Search__list Search__list_result"
@@ -45,67 +37,27 @@
             @click="openTask(item)"
           >
             <v-list-item-title class="Search__title">
-              <v-icon
-                v-if="!item.complited && !item.sub"
-                class="mr-4"
-                color="accent"
-                >mdi-checkbox-marked</v-icon
-              >
-              <v-icon
-                v-if="item.complited && !item.sub"
-                class="mr-4"
-                color="gainsBorough"
-                >mdi-checkbox-marked</v-icon
-              >
-              <v-icon
-                v-if="!item.complited && item.sub"
-                class="mr-4"
-                color="accent"
-                >mdi-file-tree</v-icon
-              >
-              <v-icon
-                v-if="item.complited && item.sub"
-                class="mr-4"
-                color="gainsBorough"
-                >mdi-file-tree</v-icon
-              >
+              <v-icon v-if="!item.complited && !item.sub" class="mr-4" color="accent">mdi-checkbox-marked</v-icon>
+              <v-icon v-if="item.complited && !item.sub" class="mr-4" color="gainsBorough">mdi-checkbox-marked</v-icon>
+              <v-icon v-if="!item.complited && item.sub" class="mr-4" color="accent">mdi-file-tree</v-icon>
+              <v-icon v-if="item.complited && item.sub" class="mr-4" color="gainsBorough">mdi-file-tree</v-icon>
 
-              <span class="Search__text subtitle-2 font-weight-bold">{{
-                item.title
-              }}</span>
+              <span class="Search__text subtitle-2 font-weight-bold">{{ item.title }}</span>
             </v-list-item-title>
           </v-list-item>
         </my-scroll>
       </v-list>
 
-      <v-list
-        v-else
-        class="Search__list Search__list_no-result d-flex flex-column align-center justify-center"
-      >
+      <v-list v-else class="Search__list Search__list_no-result d-flex flex-column align-center justify-center">
         <svg width="104" height="77" viewBox="0 0 104 77">
           <defs>
             <path
               id="svg-b-561"
               d="M23.138 55.258c20.75-9.759 40.253-10.816 58.513-3.173C99.91 59.727 72.926 63.549.699 63.549l22.44-8.291z"
             ></path>
-            <filter
-              id="svg-a-561"
-              width="139.3%"
-              height="306.1%"
-              x="-19.7%"
-              y="-78.8%"
-              filterUnits="objectBoundingBox"
-            >
-              <feOffset
-                dy="4"
-                in="SourceAlpha"
-                result="shadowOffsetOuter1"
-              ></feOffset>
-              <feGaussianBlur
-                in="shadowOffsetOuter1"
-                result="shadowBlurOuter1"
-                stdDeviation="5"
-              ></feGaussianBlur>
+            <filter id="svg-a-561" width="139.3%" height="306.1%" x="-19.7%" y="-78.8%" filterUnits="objectBoundingBox">
+              <feOffset dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+              <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="5"></feGaussianBlur>
               <feColorMatrix
                 in="shadowBlurOuter1"
                 values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0212013134 0"
@@ -134,11 +86,7 @@
               d="M42.1 14v22.576a3.489 3.489 0 0 1-3.485 3.488H35.13"
             ></path>
             <g transform="rotate(3 43.938 55.3)">
-              <use
-                fill="#000"
-                filter="url(#svg-a-561)"
-                xlink:href="#svg-b-561"
-              ></use>
+              <use fill="#000" filter="url(#svg-a-561)" xlink:href="#svg-b-561"></use>
               <use fill="#FFC422" xlink:href="#svg-b-561"></use>
             </g>
           </g>

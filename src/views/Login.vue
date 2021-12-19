@@ -10,6 +10,7 @@
           filled
           solo
           dense
+          autocomplete="new-password"
           name="Email"
           label="Email"
           required
@@ -24,6 +25,7 @@
           solo
           dense
           name="Password"
+          autocomplete="new-password"
           label="Пароль"
           required
           @click:append="showPassword = !showPassword"

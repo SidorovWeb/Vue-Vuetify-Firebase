@@ -10,44 +10,20 @@
       <v-list-item class="pl-0 pr-6">
         <v-list-item-content>
           <v-list-item-title class="mb-0">
-            <v-skeleton-loader
-              v-if="isLoading"
-              v-bind="attrs"
-              type="text"
-            ></v-skeleton-loader>
-            <v-btn
-              v-else
-              class="px-0 text-none no-background-hover"
-              height="28px"
-              text
-              @click="updateName"
-            >
-              <span
-                class="font-weight-bold text-subtitle-1 px-0 text-none ellipes"
-                >{{ userName }}</span
-              >
+            <v-skeleton-loader v-if="isLoading" v-bind="attrs" type="text"></v-skeleton-loader>
+            <v-btn v-else class="px-0 text-none no-background-hover" height="28px" text @click="updateName">
+              <span class="font-weight-bold text-subtitle-1 px-0 text-none ellipes">{{ userName }}</span>
             </v-btn>
           </v-list-item-title>
 
           <v-list-item-subtitle class="ellipes text-subtitle-2">
-            <v-skeleton-loader
-              class="mt-2"
-              v-if="isLoading"
-              v-bind="attrs"
-              type="text"
-            ></v-skeleton-loader>
+            <v-skeleton-loader class="mt-2" v-if="isLoading" v-bind="attrs" type="text"></v-skeleton-loader>
             <div v-else>{{ userEmail }}</div>
           </v-list-item-subtitle>
         </v-list-item-content>
         <v-fade-transition>
           <div v-if="hover" style="position: absolute; right: 20px; top: 0">
-            <v-btn
-              elevation="0"
-              fab
-              x-small
-              color="transparent"
-              @click="updateName"
-            >
+            <v-btn elevation="0" fab x-small color="transparent" @click="updateName">
               <v-icon color="accent"> mdi-pencil </v-icon>
             </v-btn>
           </div>

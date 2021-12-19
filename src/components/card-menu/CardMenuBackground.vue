@@ -1,10 +1,5 @@
 <template>
-  <v-card
-    class="CardMenuBackground"
-    :class="'CardMenuBackground--' + theme"
-    color="primary"
-    elevation="0"
-  >
+  <v-card class="CardMenuBackground" :class="'CardMenuBackground--' + theme" color="primary" elevation="0">
     <v-card-title
       class="CardMenu-title secondary font-weight-bold subtitle-1 py-3 shadow"
       @click="toLink({ path: '/', direction: 'right' })"
@@ -15,13 +10,7 @@
     <my-scroll>
       <v-card-text style="max-height: calc(100vh - 152px)">
         <v-row class="">
-          <v-col
-            class="py-2"
-            v-for="(item, idx) in thumbnails"
-            :key="idx"
-            cols="12"
-            md="6"
-          >
+          <v-col class="py-2" v-for="(item, idx) in thumbnails" :key="idx" cols="12" md="6">
             <div
               :class="item.img === currentImg ? 'active' : ''"
               :data-img="item.img ? item.img : '0'"
@@ -29,9 +18,7 @@
               :style="backgroundImageSrc(item.img)"
               @click="chengeBackround(item.img)"
             >
-              <span
-                v-if="item.img === ''"
-                class="CardMenuBackground__thumbnail__text text-h6 font-weight-bold"
+              <span v-if="item.img === ''" class="CardMenuBackground__thumbnail__text text-h6 font-weight-bold"
                 >Спокойствие</span
               >
               <span class="CardMenuBackground__thumbnail__sizer"></span>
@@ -102,8 +89,7 @@ export default {
       }
 
       return {
-        backgroundImage: `url(${require(`@/assets/themes/${this.theme}/` +
-          img)})`,
+        backgroundImage: `url(${require(`@/assets/themes/${this.theme}/` + img)})`,
       }
     },
 

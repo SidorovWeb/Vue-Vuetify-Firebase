@@ -9,10 +9,7 @@
     :transition="dialogOptions.transition"
     scrollable
   >
-    <v-card
-      class="dialog dialog-update-task rounded-lg overflow-hidden"
-      color="primary"
-    >
+    <v-card class="dialog dialog-update-task rounded-lg overflow-hidden" color="primary">
       <my-title text="Детали задачи" :class="[isComplited ? complited : '']">
         <v-btn
           v-if="!task.complited"
@@ -29,18 +26,13 @@
       <my-scroll>
         <v-card-text class="pt-8" style="height: 100%; overflow-x: hidden">
           <div :class="[isComplited ? complited : '']">
-            <field
-              v-model="task.title"
-              placeholder="Имя задачи"
-              :autofocus="!isComplited"
-            ></field>
+            <field v-model="task.title" placeholder="Имя задачи" :autofocus="!isComplited"></field>
 
             <v-list dense color="primary">
               <!-- Priority -->
               <v-list-item class="pl-0 pr-0">
                 <v-list-item-content>
-                  <v-list-item-title
-                    class="font-weight-bold dark--text text--darken-3 caption mb-4 mt-2"
+                  <v-list-item-title class="font-weight-bold dark--text text--darken-3 caption mb-4 mt-2"
                     >ПРИОРИТЕТ</v-list-item-title
                   >
                   <panel-btns
@@ -58,8 +50,7 @@
               <!-- Category -->
               <v-list-item class="pl-0 pr-0">
                 <v-list-item-content>
-                  <v-list-item-title
-                    class="font-weight-bold dark--text text--darken-3 caption mb-4 mt-2"
+                  <v-list-item-title class="font-weight-bold dark--text text--darken-3 caption mb-4 mt-2"
                     >СПИСОК</v-list-item-title
                   >
                   <div class="text-left">
@@ -78,8 +69,7 @@
               <!-- Tags -->
               <v-list-item class="pl-0 pr-0">
                 <v-list-item-content>
-                  <v-list-item-title
-                    class="font-weight-bold dark--text text--darken-3 caption mb-2 mt-2"
+                  <v-list-item-title class="font-weight-bold dark--text text--darken-3 caption mb-2 mt-2"
                     >ТЕГИ</v-list-item-title
                   >
                   <div class="mb-2">
@@ -113,21 +103,16 @@
               <!-- Notes -->
               <v-list-item class="pl-0 pr-0">
                 <v-list-item-content>
-                  <v-list-item-title
-                    class="font-weight-bold dark--text text--darken-3 caption mb-4 mt-2"
+                  <v-list-item-title class="font-weight-bold dark--text text--darken-3 caption mb-4 mt-2"
                     >ЗАМЕТКИ</v-list-item-title
                   >
-                  <my-textarea
-                    v-model="task.notes"
-                    placeholder="Напишите сюда свои заметки"
-                  ></my-textarea>
+                  <my-textarea v-model="task.notes" placeholder="Напишите сюда свои заметки"></my-textarea>
                 </v-list-item-content>
               </v-list-item>
               <!-- SubTask -->
               <v-list-item class="pl-0 pr-0">
                 <v-list-item-content class="sub-task">
-                  <v-list-item-title
-                    class="font-weight-bold dark--text text--darken-3 caption mb-4 mt-2"
+                  <v-list-item-title class="font-weight-bold dark--text text--darken-3 caption mb-4 mt-2"
                     >ПОДЗАДАЧИ</v-list-item-title
                   >
                   <sub-tasks :task="task" @subTasks="subTasks" />
@@ -136,21 +121,15 @@
               <!-- Attachments -->
               <v-list-item class="pl-0 pr-0">
                 <v-list-item-content>
-                  <v-list-item-title
-                    class="font-weight-bold dark--text text--darken-3 caption mb-4 mt-2"
+                  <v-list-item-title class="font-weight-bold dark--text text--darken-3 caption mb-4 mt-2"
                     >ВЛОЖЕНИЯ</v-list-item-title
                   >
-                  <attachments
-                    @upload="upload"
-                    :taskId="task.id"
-                    :attachmentsFiles="task.attachments"
-                  />
+                  <attachments @upload="upload" :taskId="task.id" :attachmentsFiles="task.attachments" />
                 </v-list-item-content>
               </v-list-item>
               <v-list-item class="pl-0 pr-0">
                 <v-list-item-content>
-                  <v-list-item-title
-                    class="font-weight-bold dark--text text--darken-3 caption mb-4 mt-2"
+                  <v-list-item-title class="font-weight-bold dark--text text--darken-3 caption mb-4 mt-2"
                     >СОЗДАНО</v-list-item-title
                   >
                   {{ task.timeOfСreation | formatDate }}
@@ -158,23 +137,14 @@
               </v-list-item>
             </v-list>
             <v-card-actions class="justify-center">
-              <v-btn
-                class="text-none font-weight-bold subtitle-2"
-                color="error"
-                text
-                rounded
-                @click="deleteTask"
-              >
+              <v-btn class="text-none font-weight-bold subtitle-2" color="error" text rounded @click="deleteTask">
                 Удалить
               </v-btn>
             </v-card-actions>
           </div>
         </v-card-text>
       </my-scroll>
-      <v-card-actions
-        class="battons-bar pa-0 elevation-5"
-        v-if="!task.complited"
-      >
+      <v-card-actions class="battons-bar pa-0 elevation-5" v-if="!task.complited">
         <v-btn
           class="secondary text-none font-weight-bold subtitle-1 rounded-0"
           height="54px"
@@ -206,10 +176,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import {
-  actionsTypes as actionsDialog,
-  mutationTypes as dialog,
-} from '@/store/modules/dialog'
+import { actionsTypes as actionsDialog, mutationTypes as dialog } from '@/store/modules/dialog'
 import { actionsTypes as tasks } from '@/store/modules/tasks'
 import { actionsTypes as profile } from '@/store/modules/profile'
 import formatDate from '@/filters/formatDate.js'
@@ -310,6 +277,7 @@ export default {
         ...this.task,
         deleteTask: true,
         timeOfDeleteTask: new Date(),
+        complited: true,
       })
 
       this.$emit('closeDialog')
@@ -340,9 +308,7 @@ export default {
       this.$store.commit(dialog.dialogTags, true)
     },
     removeTag(index) {
-      const newTags = this.task.tags.filter(
-        (item) => item != this.task.tags[index]
-      )
+      const newTags = this.task.tags.filter((item) => item != this.task.tags[index])
       this.$emit('updateTags', newTags)
     },
     callDialogCategory() {

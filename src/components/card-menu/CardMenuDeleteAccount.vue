@@ -8,10 +8,7 @@
       Удалить аккаунт
     </v-card-title>
     <my-scroll>
-      <v-card-text
-        class="px-5 pt-6 text-center font-weight-bold"
-        style="max-height: calc(100vh - 168px)"
-      >
+      <v-card-text class="px-5 pt-6 text-center font-weight-bold" style="max-height: calc(100vh - 168px)">
         <div class="error--text mb-6" style="max-width: 200px; margin: 0 auto">
           Это навсегда удалит все ваши задачи и историю.
         </div>
@@ -26,6 +23,7 @@
           hide-details
           name="Password"
           label="Пароль"
+          autocomplete="new-password"
           @click:append="showPassword = !showPassword"
         ></v-text-field>
         <div class="mb-2">Если вы забыли свой пароль</div>

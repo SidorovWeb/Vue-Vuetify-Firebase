@@ -9,6 +9,7 @@
           filled
           solo
           dense
+          autocomplete="new-password"
           name="Name"
           label="Имя"
           required
@@ -19,6 +20,7 @@
           filled
           solo
           dense
+          autocomplete="new-password"
           name="Email"
           label="Email"
           required
@@ -34,6 +36,7 @@
           dense
           name="Password"
           label="Пароль"
+          autocomplete="new-password"
           required
           @click:append="showPassword = !showPassword"
         ></v-text-field>
