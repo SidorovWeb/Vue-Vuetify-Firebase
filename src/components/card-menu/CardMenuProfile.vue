@@ -11,34 +11,19 @@
       <my-scroll>
         <v-card-text class="pa-0" style="max-height: calc(100vh - 212px)">
           <div class="d-flex flex-column align-center py-4">
-            <v-list-item-avatar
-              width="60px"
-              height="60px"
-              class="CardMenuProfile__avatar profile__avatar mr-0"
-            >
+            <v-list-item-avatar width="60px" height="60px" class="CardMenuProfile__avatar profile__avatar mr-0">
               <user-photo :isDownload="false" />
             </v-list-item-avatar>
 
-            <v-list-item-title
-              class="font-weight-bold text-subtitle-1 text-none mb-0"
-            >
+            <v-list-item-title class="font-weight-bold text-subtitle-1 text-none mb-0">
               {{ currentUser.name }}
             </v-list-item-title>
-            <v-list-item-subtitle class="text-subtitle-2">{{
-              currentUser.email
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle class="text-subtitle-2">{{ currentUser.email }}</v-list-item-subtitle>
           </div>
           <v-list color="primary">
-            <v-list-item
-              v-for="(item, index) in array"
-              :key="index"
-              @click="toLink(item)"
-              :ripple="false"
-            >
+            <v-list-item v-for="(item, index) in array" :key="index" @click="toLink(item)" :ripple="false">
               <v-list-item-content>
-                <v-list-item-title class="dark--text subtitle-2">{{
-                  item.name
-                }}</v-list-item-title>
+                <v-list-item-title class="dark--text subtitle-2">{{ item.name }}</v-list-item-title>
               </v-list-item-content>
               <v-list-item-action>
                 <v-icon color="dark"> mdi-chevron-right </v-icon>
@@ -49,14 +34,7 @@
         </v-card-text>
       </my-scroll>
       <v-card-actions class="justify-center primary">
-        <v-btn
-          class="text-none subtitle-2 mb-2"
-          color="dark"
-          text
-          rounded
-          @click="logout"
-          :ripple="false"
-        >
+        <v-btn class="text-none subtitle-2 mb-2" text rounded color="accent" @click="logout" :ripple="false">
           Выйти
         </v-btn>
       </v-card-actions>
@@ -99,9 +77,7 @@ export default {
       })
     },
     logout() {
-      this.$store
-        .dispatch(actionsTypes.logout)
-        .then(() => this.$router.push({ name: 'login' }))
+      this.$store.dispatch(actionsTypes.logout).then(() => this.$router.push({ name: 'login' }))
     },
   },
 }

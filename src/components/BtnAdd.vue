@@ -29,4 +29,8 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.v-btn__content {
+  display: block;
+}
+</style>

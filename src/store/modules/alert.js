@@ -13,7 +13,9 @@ export const actionsTypes = {
 }
 
 const mutations = {
-  [mutationsTypes.callAlertStart]() {},
+  [mutationsTypes.callAlertStart](state) {
+    state.message = ''
+  },
   [mutationsTypes.callAlertSuccess](state, payload) {
     state.message = payload
   },

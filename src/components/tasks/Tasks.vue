@@ -4,30 +4,18 @@
       <my-scroll>
         <v-card flat class="pl-4 pr-2" color="primary">
           <v-list class="py-6" dense color="primary">
-            <div v-if="isLoading && filteredTasks.length < 1">
+            <div v-if="isLoading">
               <div v-for="item in 6" :key="item">
                 <br />
-                <v-skeleton-loader
-                  width="50%"
-                  v-bind="attrs"
-                  type="text"
-                ></v-skeleton-loader>
+                <v-skeleton-loader width="50%" v-bind="attrs" type="text"></v-skeleton-loader>
               </div>
             </div>
 
-            <div
-              class="subtitle-1 font-weight-bold dark--text"
-              v-if="(isTasks && !isLoading) || filteredTasks.length < 1"
-            >
+            <div class="subtitle-1 font-weight-bold dark--text" v-if="filteredTasks.length === 0 && !isLoading">
               Нет задач
             </div>
 
-            <transition-group
-              v-if="!userSortBy"
-              name="insert"
-              tag="div"
-              class="tasks__list"
-            >
+            <transition-group v-if="!userSortBy" name="insert" tag="div" class="tasks__list">
               <task
                 v-for="(task, index) in filteredTasks"
                 :key="task.id"
@@ -46,11 +34,7 @@
                 >
                   {{ item.category }}
                 </div>
-                <transition-group
-                  name="insert"
-                  tag="div"
-                  class="tasks__list mb-5"
-                >
+                <transition-group name="insert" tag="div" class="tasks__list mb-5">
                   <task
                     v-for="(task, index) in item.sortedArray"
                     :key="task.id"
@@ -73,10 +57,7 @@
 import { mapState, mapGetters } from 'vuex'
 import { actionsTypes, gettersTypes } from '@/store/modules/tasks'
 import Task from '@/components/tasks/Task.vue'
-import {
-  actionsTypes as actionsDialog,
-  mutationTypes,
-} from '@/store/modules/dialog'
+import { actionsTypes as actionsDialog, mutationTypes } from '@/store/modules/dialog'
 import moment from 'moment'
 
 export default {
@@ -113,9 +94,9 @@ export default {
       return this.user ? this.currentUser.sortBy : null
     },
 
-    isTasks: function () {
-      return this.notDeletedTasks.length === 0 ? true : false
-    },
+    // isTasks: function () {
+    //   return this.notDeletedTasks.length === 0 ? true : false
+    // },
 
     filteredTasks: function () {
       const paramsName = this.$route.params.name
@@ -170,10 +151,7 @@ export default {
         const filter = [...this.notDeletedTasks].filter((item) => {
           if (!item.complited) {
             const array = [0, 1, 2, 3, 4, 5, 6, 7]
-            const dateDeleteTask = this.correctDate(
-              item.timeOfСreation,
-              'YYYY-MM-DD'
-            )
+            const dateDeleteTask = this.correctDate(item.timeOfСreation, 'YYYY-MM-DD')
             const todayDate = moment().format('YYYY-MM-DD')
 
             const date1 = moment(dateDeleteTask)
@@ -251,7 +229,6 @@ export default {
       } else {
         time = item.toDate()
       }
-      console.log()
 
       return moment(time).format(format)
     },

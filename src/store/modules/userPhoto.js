@@ -66,11 +66,13 @@ const actions = {
     })
   },
 
-  async [actionsTypes.downloadUserPhoto]({ commit }) {
+  async [actionsTypes.downloadUserPhoto]({ commit, rootState }) {
     commit(mutationsTypes.downloadUserPhotoStart)
     const uid = fb.auth.currentUser.uid
+    const userPhoto = rootState.profile.currentUser.userPhoto
+
     await fb.storage
-      .ref(`users/${uid}/userPhoto.jpeg`)
+      .ref(`users/${uid}/${userPhoto}`)
       .getDownloadURL()
       .then((url) => {
         commit(mutationsTypes.downloadUserPhotoSuccess, url)

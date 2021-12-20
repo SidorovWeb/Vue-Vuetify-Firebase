@@ -37,9 +37,20 @@
               <router-link class="accent--text" :to="{ name: 'register' }">У меня нет аккаунта</router-link>
             </div>
             <v-spacer></v-spacer>
-            <v-btn type="submit" color="accent" :loading="isSubmitting" :disabled="isSubmitting" rounded>Войти</v-btn>
+            <v-btn
+              type="submit"
+              class="text-none font-weight-bold white--text px-8"
+              color="accent"
+              :loading="isSubmitting"
+              :disabled="isSubmitting"
+              rounded
+              >Войти</v-btn
+            >
           </v-col>
         </v-row>
+        <p class="text-left mb-0">Логин и пароль для тех кому лень зарегистрироваться:</p>
+        <p class="text-left mb-0">user@mail.ru</p>
+        <p class="text-left mb-0">Qwerty1</p>
         <!-- <v-btn
           class="Login__btn_google pa-2 mt-7 text-left"
           type="button"

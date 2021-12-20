@@ -1,12 +1,6 @@
 <template>
   <div>
-    <v-navigation-drawer
-      app
-      class="drawer elevation-4"
-      color="primary"
-      width="280px"
-      permanent
-    >
+    <v-navigation-drawer app class="drawer elevation-4" color="primary" width="280px" permanent>
       <div class="py-3 pb-6">
         <profile />
         <div class="d-flex justify-center">

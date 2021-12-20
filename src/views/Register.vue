@@ -46,7 +46,13 @@
               <router-link class="accent--text" :to="{ name: 'login' }">У меня есть аккаунта</router-link>
             </div>
             <v-spacer></v-spacer>
-            <v-btn :loading="isSubmitting" :disabled="isSubmitting" type="submit" color="accent" rounded
+            <v-btn
+              :loading="isSubmitting"
+              class="text-none font-weight-bold white--text px-8"
+              :disabled="isSubmitting"
+              type="submit"
+              color="accent"
+              rounded
               >Зарегистрироваться</v-btn
             >
           </v-col>

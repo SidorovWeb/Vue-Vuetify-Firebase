@@ -251,7 +251,6 @@ export default {
       } else {
         time = item.toDate()
       }
-      console.log()
 
       return moment(time).format(format)
     },

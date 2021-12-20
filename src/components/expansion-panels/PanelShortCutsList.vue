@@ -18,12 +18,7 @@
         >
           <v-list-item-title class="font-weight-bold dark--text text--darken-3">
             Сегодня
-            <v-badge
-              v-if="today.length"
-              class="ml-2 white--text"
-              color="pantone"
-              :content="today.length"
-            ></v-badge>
+            <v-badge v-if="today.length" class="ml-2 white--text" color="pantone" :content="today.length"></v-badge>
           </v-list-item-title>
         </v-list-item>
         <v-list-item
@@ -88,19 +83,14 @@ export default {
           time = item.timeOfСreation.toDate()
         }
 
-        return (
-          !item.complited && moment(time).format('L') === moment().format('L')
-        )
+        return !item.complited && moment(time).format('L') === moment().format('L')
       })
     },
     lastSevenDays: function () {
       return [...this.getTasks].filter((item) => {
         if (!item.complited) {
           const array = [0, 1, 2, 3, 4, 5, 6, 7]
-          const dateDeleteTask = this.correctDate(
-            item.timeOfСreation,
-            'YYYY-MM-DD'
-          )
+          const dateDeleteTask = this.correctDate(item.timeOfСreation, 'YYYY-MM-DD')
           const todayDate = moment().format('YYYY-MM-DD')
 
           const date1 = moment(dateDeleteTask)
@@ -133,7 +123,6 @@ export default {
       } else {
         time = item.toDate()
       }
-      console.log()
 
       return moment(time).format(format)
     },
