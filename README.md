@@ -1,4 +1,4 @@
-[Live Site](https://todo-vue-vuetify-511ff.web.app/).
+Live Site - https://todo-vue-vuetify-511ff.web.app/
 
 # todo_vue
 
